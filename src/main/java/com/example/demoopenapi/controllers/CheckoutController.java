@@ -1,7 +1,7 @@
 package com.example.demoopenapi.controllers;
 
-import com.example.demoopenapi.services.ProductService;
-import com.example.demoopenapi.services.dto.ProductDTO;
+import com.example.demoopenapi.services.CheckoutService;
+import com.example.demoopenapi.services.dto.CheckoutDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,20 +16,20 @@ import java.util.Collection;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/api/v1/product")
-public class ProductController {
+@RequestMapping(value = "/api/v1/checkout")
+public class CheckoutController {
 
-    private final ProductService service;
+    private final CheckoutService service;
 
     @GetMapping(value = "/all")
-    public ResponseEntity<Collection<ProductDTO>> all() {
-        log.info("Get all products");
+    public ResponseEntity<Collection<CheckoutDTO>> all() {
+        log.info("Get all checkouts");
         return new ResponseEntity<>(service.all(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/find/{id}")
-    public ResponseEntity<ProductDTO> find(@PathVariable Long id) {
-        log.info("Get product by ID [{}]", id);
+    public ResponseEntity<CheckoutDTO> find(@PathVariable Long id) {
+        log.info("Get checkout by ID [{}]", id);
         return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 }

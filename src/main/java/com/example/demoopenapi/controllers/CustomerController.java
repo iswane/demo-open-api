@@ -1,7 +1,7 @@
 package com.example.demoopenapi.controllers;
 
-import com.example.demoopenapi.services.ProductService;
-import com.example.demoopenapi.services.dto.ProductDTO;
+import com.example.demoopenapi.services.CustomerService;
+import com.example.demoopenapi.services.dto.CustomerDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,20 +16,20 @@ import java.util.Collection;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/api/v1/product")
-public class ProductController {
+@RequestMapping(value = "/api/v1/customer")
+public class CustomerController {
 
-    private final ProductService service;
+    private final CustomerService service;
 
     @GetMapping(value = "/all")
-    public ResponseEntity<Collection<ProductDTO>> all() {
-        log.info("Get all products");
+    public ResponseEntity<Collection<CustomerDTO>> all() {
+        log.info("Get all customers");
         return new ResponseEntity<>(service.all(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/find/{id}")
-    public ResponseEntity<ProductDTO> find(@PathVariable Long id) {
-        log.info("Get product by ID [{}]", id);
+    public ResponseEntity<CustomerDTO> find(@PathVariable Long id) {
+        log.info("Get customer by ID [{}]", id);
         return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 }
